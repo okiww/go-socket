@@ -15,7 +15,7 @@ type MessageHandler struct {
 
 func NewMessageHandler(storage *repositories.MessageStorage) *MessageHandler {
 	return &MessageHandler{
-		messageService: services.NewMessageService(),
+		messageService: services.NewMessageService(storage),
 		storage:        storage,
 	}
 }

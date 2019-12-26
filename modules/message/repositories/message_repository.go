@@ -1,6 +1,7 @@
 package repositories
 
 import (
+	"errors"
 	"go-socket/modules/message/models"
 )
 
@@ -8,9 +9,9 @@ type messageRepository struct {
 	storage *MessageStorage
 }
 
-func NewMessageRepositoryHandler() MessageInterface {
+func NewMessageRepositoryHandler(storage *MessageStorage) MessageInterface {
 	return &messageRepository{
-		storage: NewMessageStorage(),
+		storage: storage,
 	}
 }
 
@@ -24,6 +25,9 @@ func (repo messageRepository) GetAll() ([]models.Message, error) {
 }
 
 func (repo messageRepository) Save(message models.Message) error {
+	if message.Message == "" {
+		return errors.New("message data not empty string")
+	}
 	repo.storage.Messages = append(repo.storage.Messages, message)
 	return nil
 }
