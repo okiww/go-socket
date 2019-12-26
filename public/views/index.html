@@ -25,7 +25,7 @@
             alert('Your browser does not support WebSocket');
             return
         }
-        var name = "okky";
+        var name = makeid(10);
         app.ws = new WebSocket("ws://localhost:8080/api/ws?username=" + name);
         app.ws.onopen = function () {
         };
@@ -39,6 +39,16 @@
         }
     };
     window.onload = app.init;
+
+    function makeid(length) {
+        var result           = '';
+        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        var charactersLength = characters.length;
+        for ( var i = 0; i < length; i++ ) {
+            result += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        return result;
+    }
 </script>
 </body>
 </html>

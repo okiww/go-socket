@@ -17,6 +17,7 @@ func NewMessageService(storage *repositories.MessageStorage) *MessageService {
 	}
 }
 
+// GetAllMessage service for get all message
 func (svc MessageService) GetAllMessage() ([]dto.Message, error) {
 	model, err := svc.messageRepo.GetAll()
 	var result []dto.Message
@@ -27,6 +28,7 @@ func (svc MessageService) GetAllMessage() ([]dto.Message, error) {
 	return result, err
 }
 
+// Submit service for get all message
 func (svc MessageService) Submit(message string) (*dto.Message, error) {
 	model := models.NewMessage(message)
 	err := svc.messageRepo.Save(*model)

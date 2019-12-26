@@ -21,6 +21,7 @@ func NewMessageHandler(storage *repositories.MessageStorage) *MessageHandler {
 	}
 }
 
+// Handler get all messages
 func (ctrl MessageHandler) GetAllMessages(ctx *gin.Context)  {
 	result, err := ctrl.messageService.GetAllMessage()
 	if err != nil {
@@ -34,6 +35,7 @@ func (ctrl MessageHandler) GetAllMessages(ctx *gin.Context)  {
 	})
 }
 
+// Handler submit message
 func (ctrl MessageHandler) SubmitMessage(ctx *gin.Context)  {
 	var request dto.RequestMessage
 	err := ctx.ShouldBindJSON(&request)

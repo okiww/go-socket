@@ -15,6 +15,7 @@ func NewMessageRepositoryHandler(storage *MessageStorage) MessageInterface {
 	}
 }
 
+// repository get all messages from storage
 func (repo messageRepository) GetAll() ([]models.Message, error) {
 	messages := []models.Message{}
 	for _, item := range repo.storage.Messages {
@@ -24,6 +25,7 @@ func (repo messageRepository) GetAll() ([]models.Message, error) {
 	return messages, nil
 }
 
+// repository save message to storage
 func (repo messageRepository) Save(message models.Message) error {
 	if message.Message == "" {
 		return errors.New("message data not empty string")
