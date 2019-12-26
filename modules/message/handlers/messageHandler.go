@@ -24,8 +24,9 @@ func (ctrl MessageHandler) GetAllMessages(ctx *gin.Context)  {
 	result, err := ctrl.messageService.GetAllMessage()
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
-			"error": err,
+			"error": err.Error(),
 		})
+		return
 	}
 	ctx.JSON(http.StatusOK, gin.H{
 		"data": result,
@@ -39,13 +40,15 @@ func (ctrl MessageHandler) SubmitMessage(ctx *gin.Context)  {
 		ctx.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 			"error": "invalid request",
 		})
+		return
 	}
 
 	result, err := ctrl.messageService.Submit(request.Message)
 	if err != nil {
 		ctx.AbortWithStatusJSON(http.StatusInternalServerError, gin.H{
-			"error": err,
+			"error": err.Error(),
 		})
+		return
 	}
 
 	ctx.JSON(http.StatusOK, gin.H{
