@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"github.com/gin-gonic/gin"
+	"go-socket/common/infra"
 	"go-socket/modules/message/dto"
 	"go-socket/modules/message/repositories"
 	"go-socket/modules/message/services"
@@ -50,6 +51,9 @@ func (ctrl MessageHandler) SubmitMessage(ctx *gin.Context)  {
 		})
 		return
 	}
+
+	currentConn := infra.GetCurrentConnection()
+	infra.BrodacastMessage(currentConn, result)
 
 	ctx.JSON(http.StatusOK, gin.H{
 		"data": result,

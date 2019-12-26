@@ -18,6 +18,14 @@
   version = "v0.1.0"
 
 [[projects]]
+  branch = "master"
+  digest = "1:e0cac8cbe2a01d680e9fd1beed12042296ceaa5c393284702dbd91b75c65e19e"
+  name = "github.com/gin-gonic/contrib"
+  packages = ["static"]
+  pruneopts = "UT"
+  revision = "d6e26eeaa6074d96f18e9458b6cc245adeff042c"
+
+[[projects]]
   digest = "1:249eec71412b5d3bb94374292ccbc81a1e8314cd2c6b2c830add3357e6c4b842"
   name = "github.com/gin-gonic/gin"
   packages = [
@@ -64,6 +72,14 @@
   pruneopts = "UT"
   revision = "6c65a5562fc06764971b7c5d05c76c75e84bdbf7"
   version = "v1.3.2"
+
+[[projects]]
+  digest = "1:e62657cca9badaa308d86e7716083e4c5933bb78e30a17743fc67f50be26f6f4"
+  name = "github.com/gorilla/websocket"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c3e18be99d19e6b3e8f1559eea2c161a665c4b6b"
+  version = "v1.4.1"
 
 [[projects]]
   branch = "master"
@@ -173,8 +189,10 @@
   analyzer-name = "dep"
   analyzer-version = 1
   input-imports = [
+    "github.com/gin-gonic/contrib/static",
     "github.com/gin-gonic/gin",
     "github.com/golang/mock/gomock",
+    "github.com/gorilla/websocket",
     "github.com/jinzhu/copier",
     "github.com/satori/go.uuid",
     "github.com/stretchr/testify/assert",
