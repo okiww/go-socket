@@ -12,6 +12,7 @@ var (
 	handler *handlers.MessageHandler
 )
 
+// initial obj
 func init() {
 	stg := repositories.NewMessageStorage()
 	handler = handlers.NewMessageHandler(stg)
@@ -30,7 +31,10 @@ func SetupRouter() *gin.Engine {
 			"message": "pong",
 		})
 	})
+	// load static
 	r.Use(static.Serve("/", static.LocalFile("./public/views", true)))
+
+	// grouping API
 	api := r.Group("/api")
 	{
 		api.POST("/message", handler.SubmitMessage)

@@ -3,7 +3,7 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <title>Okky - Websocker Listener</title>
+    <title>Okky - Websocket Listener</title>
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 </head>
 <body class="container">
@@ -31,7 +31,7 @@
         };
         app.ws.onmessage = function (event) {
             var res = JSON.parse(event.data);
-            var message = "created_at=" + res["CreatedAt"] + "- id=" + res["ID"] + "- message=" + res["Message"];
+            var message = "created_at=" + res["CreatedAt"] + " - id=" + res["ID"] + " - message=" + res["Message"];
             $("#list-message").append('<li><span>'+ message +'</span></li>')
         };
         app.ws.onclose = function () {
